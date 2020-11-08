@@ -1,7 +1,7 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://notebook-sepia.vercel.app/"
 languageCode = "en"
 defaultContentLanguage = "en"
-title = "Notebook - A super concise theme for Hugo"
+title = "Notebook - A Daily Journal For My IT Journey!!"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
@@ -17,7 +17,7 @@ pygmentsCodefencesGuessSyntax = true
 hasCJKLanguage = false
 paginate = 5
 disqusShortname = ""      # disqus_shortname
-googleAnalytics = ""      # UA-XXXXXXXX-X
+googleAnalytics = "251995463"      # UA-XXXXXXXX-X
 copyright = "Akash Rajvanshi"
 
 [author]
@@ -54,18 +54,18 @@ copyright = "Akash Rajvanshi"
   debug = false
 
   since = "2020"
-  gitRepo = ""
+  gitRepo = "https://github.com/hacstac/Notebook"
 
   # site info (optional)
   logoTitle = "Notebook"
-  keywords = ["Hugo", "theme","even"]
-  description = "Akash Daily NoteBook."
+  keywords = ["Development", "DevOps", "Productivty"]
+  description = "A Daily Journal For My IT Journey!!"
 
   # paginate of archives, tags and categories
   archivePaginate = 50
 
   # show 'xx Posts In Total' in archive page ?
-  showArchiveCount = false
+  showArchiveCount = true
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "Monday, January 2, 2006"
@@ -78,7 +78,7 @@ copyright = "Akash Rajvanshi"
 
   toc = true
   autoCollapseToc = false   # Auto expand and collapse toc
-  fancybox = false          # see https://github.com/fancyapps/fancybox
+  fancybox = true           # see https://github.com/fancyapps/fancybox
 
   # mathjax
   mathjax = false           # see https://www.mathjax.org/
@@ -152,7 +152,7 @@ copyright = "Akash Rajvanshi"
 # See https://gohugo.io/about/hugo-and-gdpr/
 [privacy]
   [privacy.googleAnalytics]
-    anonymizeIP = true      # 12.214.31.144 -> 12.214.31.0
+    anonymizeIP = true
   [privacy.youtube]
     privacyEnhanced = true
 
