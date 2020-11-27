@@ -8,7 +8,6 @@ author: "Akash Rajvanshi"
 autoCollapseToc: false
 ---
 
-
 ## What is "this" keyword in JavaScript?
 
 `this` is a keyword that's used a lot in Object Oriented Programming. In traditional Object Oriented Programming languages, `this` points to the object. But in JavaScript, the value of `this` changes depending on how we call a function, so `this` can be quite confusing for JavaScript beginners.
@@ -59,9 +58,7 @@ Case 1: `this` in global context.
 
 Case 2: `this` in simple function.
 
-{{< gist AkashRajvanshi d5510b4638fd2b5d02dbc94922 >}}
-
-----------WIP------------
+<!-- {{< gist AkashRajvanshi d5510b4638fd2b5d02dbc94922 >}}  -->
 
 Case 3: `this` in  IIFE(Immediately invoked Function).
 
