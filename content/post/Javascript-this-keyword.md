@@ -58,7 +58,7 @@ Case 1: `this` in global context.
 
 Case 2: `this` in simple function.
 
-<!-- {{< gist AkashRajvanshi d5510b4638fd2b5d02dbc94922 >}}  -->
+{{< gist AkashRajvanshi d5510b4638fd2b5d02dbc94922 >}}
 
 Case 3: `this` in  IIFE(Immediately invoked Function).
 
