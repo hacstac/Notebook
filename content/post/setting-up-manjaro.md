@@ -14,21 +14,20 @@ autoCollapseToc: false
 
 ## STEP 1 : Download an Image File
 
-Download an Image file from their [**official\_website**](https://manjaro.org/download/kde/) and install this image file through any booting software like Rufus.
+Download an Image file from their [official\_website](https://manjaro.org/download/kde/) and install this image file through any booting software like Rufus.
 
 > NOTE : Select write in DD mode. (this option is particular for manjaro KDE version) and for other manjaro version choose “ISO image mode”
 
-**Recommended : Manjaro KDE** (if your pc/laptop have i5).
+Recommended : Manjaro KDE (if your pc/laptop have i5).
 
-**Problem**  : Sometimes when you write your **ISO** in **DD** mode then your USB drive shows less space. like if USB is 8gb then its shows only 4mb size of whole pen drive.
-**To Solve this Problem**  : Insert USB stick in Linux ( only Linux and MacOS can solve this Problem ).
+Problem : Sometimes when you write your ISO in DD mode then your USB drive shows less space. like if USB is 8gb then its shows only 4mb size of whole pen drive.
+To Solve this Problem  : Insert USB stick in Linux ( only Linux and MacOS can solve this Problem ).
 
-Open **KDE Partition Manager** ( in Manjaro ) and delete all the partitions that are present in current USB stick, and assign new partitions (this will solve your problem).
+Open KDE Partition Manager ( in Manjaro ) and delete all the partitions that are present in current USB stick, and assign new partitions (this will solve your problem).
 
 Now install the system via USB stick.
 
 ___
-
 
 ## STEP 2 : Partitions
 
@@ -55,7 +54,7 @@ ___
 
 ## STEP 3 : Install Yaourt In Manjaro
 
-> Yaourt, stands for **Yet AnOther User Repository Tool**
+> Yaourt, stands for Yet AnOther User Repository Tool
 
 > Yaourt :-is a command line interface program which complete pacman for installing software on Archlinux.
 
@@ -111,11 +110,11 @@ cd ..
 sudo rm -dR yaourt/ package-query/
 ```
 
-> Run these commands line by line .( i m not including explanation of every command in this Article. if you want to know more follow [**this**](https://www.ostechnix.com/install-yaourt-arch-linux/) )
+> Run these commands line by line .( i m not including explanation of every command in this Article. if you want to know more follow [this](https://www.ostechnix.com/install-yaourt-arch-linux/) )
 
 This will install Yaourt in system .
 
-**Some Basics Usages of Yaourt** -
+Some Basics Usages of Yaourt -
 
 - Update Arch Linux
 
@@ -242,11 +241,11 @@ ___
 
 #### Some Important Settings :-
 
-**Goto System Settings and in Startup and Shutdown Section**
+Goto System Settings and in Startup and Shutdown Section
 
-- **_Click on_**  — Desktop Session `{{ Restore Manually Saved Session }}`
-- **_Click on_** — Default Leave Option `{{ End Current Session }}`
-- **_Click on_** — Autostart`{{ Disable all applications }}`
+- _Click on_  — Desktop Session `{{ Restore Manually Saved Session }}`
+- _Click on_ — Default Leave Option `{{ End Current Session }}`
+- _Click on_ — Autostart`{{ Disable all applications }}`
 
 Otherwise it will slow your pc and open any time new desktop.
 
@@ -256,7 +255,7 @@ ___
 
 > This option is only for you when you have a 2nd storage drive in your system .
 
-> Like We have two storage drives in our system **1 SSD + 1 HDD**
+> Like We have two storage drives in our system 1 SSD + 1 HDD
 
 > Then We install our system in SSD and use HDD as for media and other files of the system.
 
@@ -269,14 +268,14 @@ ___
 Sudo fdisk-l
 ```
 
-check the fs format of your hardisk is based on like **1TB MyHdd on /dev/sda** but we can’t mount it right now , if we mount errors will come out.
+check the fs format of your hardisk is based on like 1TB MyHdd on /dev/sda but we can’t mount it right now , if we mount errors will come out.
 we need to partition it first:
 
 ```bash
 Sudo fdisk /dev/sda
 ```
 
-**Note ** —  “ m “ for help(command list)
+Note  —  “ m “ for help(command list)
 for checking partition table — “P”(Enter P)
 To partition , enter “n”,then just choose primary by entering “p”
 and then enter “1” for only one partition number.
@@ -304,9 +303,9 @@ Sudo mount /dev/sda /mnt/sda
 ```
 
 Whenever we reboot it will automatically mounted.
-we use **nano /etc/fstab**
+we use nano /etc/fstab
 
-**Note**  — To save this login terminal as a Root.
+Note  — To save this login terminal as a Root.
 
 ```bash
 /dev/sda /mnt/sda ext4 default 0 0
@@ -324,7 +323,7 @@ ___
 > when you are done installing all the apps then set all the settings. Now its time to create a backup of the system .
 > This backup is useful if you accidentally delete any system file or any error occurred in the middle of something.
 
-> **Note** -After creating Backup we will save its files in 2nd Storage drive or external hdd (because i don’t have space in my ssd to permanently saved this backup.but, if you have space in your ssd then don’t follow steps after the step 2.
+> Note -After creating Backup we will save its files in 2nd Storage drive or external hdd (because i don’t have space in my ssd to permanently saved this backup.but, if you have space in your ssd then don’t follow steps after the step 2.
 
 Step 1. Open TimeShift
 
@@ -339,10 +338,10 @@ Open Terminal As a Root
 cp -a /timeShift/snapshots/{your snapshot name}/ /mnt/{Name of your 2nd storage drive}/backup
 ```
 
-> **Note**  —  Backup from this command because without this system can’t give access to us to direct copy. and create compressed version of your backup then you will be able to save in external hdd.
+> Note  —  Backup from this command because without this system can’t give access to us to direct copy. and create compressed version of your backup then you will be able to save in external hdd.
 
-**for Restore**  —  Open octopi and search timeShift and then install
-and copy the whole snapshot to that folder **Root/TimeShift/snapshots/**
+for Restore  —  Open octopi and search timeShift and then install
+and copy the whole snapshot to that folder Root/TimeShift/snapshots/
 next, the option of restore will appear in Timeshift.
 
 ___
@@ -353,7 +352,7 @@ ___
 
 - Manual Method
 
-Open File Manager and go to **Root/var** folder, clean the folder according to the need and delete by the option of “Root Actions”.
+Open File Manager and go to Root/var folder, clean the folder according to the need and delete by the option of “Root Actions”.
 
 We will check from terminal that how much space is occupied in `var folder`.
 
@@ -363,7 +362,7 @@ df -h
 
 - Automated Method
 
-Run **Sweeper** and **Stacer** Regularly.
+Run Sweeper and Stacer Regularly.
 
 ___
 
@@ -493,22 +492,22 @@ plugins=(
 
 - Fonts and color scheme settings
 
-- Right click on empty **_zsh\_terminal_** and click on **Edit current profile** then click on Appearence.
+- Right click on empty _zsh\_terminal_ and click on Edit current profile then click on Appearence.
 
 ```dotfile
 Color-Scheme & background - Maia
 font - Meslo LG S DZ for Powerline
 ```
 
-- Install- [**Powerline Fonts**](https://github.com/powerline/fonts)
+- Install- [Powerline Fonts](https://github.com/powerline/fonts)
 
 ___
 ---
 
-- **Some Other Guides For Zsh**
+- Some Other Guides For Zsh
 
-[**1. agnoster**](https://github.com/agnoster) **/** [**agnoster-zsh-theme**](https://github.com/agnoster/agnoster-zsh-theme)
+[1. agnoster](https://github.com/agnoster) / [agnoster-zsh-theme](https://github.com/agnoster/agnoster-zsh-theme)
 
-[**2. powerline/fonts**](https://github.com/powerline/fonts)
+[2. powerline/fonts](https://github.com/powerline/fonts)
 
 ___

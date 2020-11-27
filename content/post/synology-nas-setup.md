@@ -1,6 +1,6 @@
 ---
 title: "Complete Setup For Home Media Server!!"
-date: 2019-10-1T20:00:00+08:00
+date: 2019-10-15T20:00:00+08:00
 tags: ["Linux", "Programming"]
 categories: ["Linux"]
 author: "Akash Rajvanshi"
@@ -61,7 +61,7 @@ It covers all the mobile operating systems such as Android, IOS and also Major L
 
 Hardware Used with It :
 
-HDD  : Seagate IronWolf 2TB To 12TB
+HDD : Seagate IronWolf 2TB To 12TB
 
 Expansion RAM :
 1. Synology RAM DDR3L-1866 SO-DIMM 4GB (D3NS1866L-4G), OR
@@ -93,59 +93,52 @@ Some Quick Settings:
 1. First of all check for DSM Updates
 
 2. Right Top corner ➢ Personal Settings
-  + Enable 2FA Settings for Account.
-  + Customize Login Page as per your Need.
+    - Enable 2FA Settings for Account.
+    - Customize Login Page as per your Need.
 
 3. Control Panel Settings
-  + Shared Folder  - `{{ Create Encrypted Folder or other Folders according to your Need }}`
 
-  + External Access  - `{{ Advanced ➢ Write your custom Domain ( Diskstation.example.com). we have discussed the whole setup of the custom domain in the next section and also write down your custom Ports for both (HTTP/HTTPS )
-For instance, in my setup, I used 5009 for HTTP and 5010 for HTTPS. }}`
-
-  + Network  - `{{ DSM Settings ➢ Write down the ports that we have set in above settings and check on boxes of “Automatically Redirect HTTP connections to HTTPS” & Enable HTTPS v2 }}`
-
-  + Security-  `{{ Setup Firewall ➢ Edit the basic Rules and click on the checkboxes of service that you want in your NAS device
- Protection ➢ Enable DOS Protection
- Account ➢ Enable Auto-Block
- Advanced ➢ Enable HTTPS compression and set SSL Profile level to Modern Compatibility }}`
-
-  + Other Settings -   `{{ Set Themes and other user privileges settings according to your necessity }}`
+    - Shared Folder  - Create Encrypted Folder or other Folders according to your Need
+    - External Access  - Advanced ➢ Write your custom Domain ( Diskstation.example.com). we have discussed the whole setup of the custom domain in the next section and also write down your custom Ports for both (HTTP/HTTPS ) For instance, in my setup, I used 5009 for HTTP and 5010 for HTTPS.
+    - Network  - DSM Settings ➢ Write down the ports that we have set in above settings and check on boxes of “Automatically Redirect HTTP connections to HTTPS” & Enable HTTPS v2
+    - Security- Setup Firewall ➢ Edit the basic Rules and click on the checkboxes of service that you want in your NAS device Protection ➢ Enable DOS Protection  Account ➢ Enable Auto-Block  Advanced ➢ Enable HTTPS compression and set SSL Profile level to Modern Compatibility.
+    - Other Settings - Set Themes and other user privileges settings according to your necessity
 
 4. Package Center Settings
 Package Center ➢ Settings ➢ Click on checkBox of “Synology Inc and Trusted Publishers”
 
-Name : SynoCommunity
-Location : [https://packages.SynoCommunity.com/](https://packages.SynoCommunity.com/)
+    Name : SynoCommunity
+    Location : [https://packages.SynoCommunity.com/](https://packages.SynoCommunity.com/)
 
-This will add Some Extra Packages to the Package Manager.
+    This will add Some Extra Packages to the Package Manager.
 
 5. Some Must Packages (For Home Users)
 Package Manager ➢ All Packages
 
-- Audio Station
-- Cloud Station Server
-- DNS Server
-- Document Viewer
-- Download Station
-- Hyper Backup
-- Mail Plus Server
-- Mail Plus
-- Photo Station
-- Video Station
-- USB Copy
-- Web Station
-- Plex
-- WordPress
+    - Audio Station
+    - Cloud Station Server
+    - DNS Server
+    - Document Viewer
+    - Download Station
+    - Hyper Backup
+    - Mail Plus Server
+    - Mail Plus
+    - Photo Station
+    - Video Station
+    - USB Copy
+    - Web Station
+    - Plex
+    - WordPress
 
 ![](https://cdn-images-1.medium.com/max/1024/1*2o13qqdS4xN9wpNnKvTptQ.png)
 
-1. How To Reset Synology NAS
+#### How To Reset Synology NAS
 
-Method 1 : (In this method, you won’t lose your data in NAS)
+- Method 1 : (In this method, you won’t lose your data in NAS)
 Push the pin in the reset button for 5-Sec then release pin after Bip. again insert the pin and push down for 5-Secs and release the pin after 3 Bips .
 This will Restart the NAS and will show the Red Light on Status LED then connect your synology again with find.synology.com and reinstall DSM.
 
-Method 2 : (In this method, the data will be wiped out Completely)
+- Method 2 : (In this method, the data will be wiped out Completely)
 Open Control Panel ➢ Update Section ➢  Reset
 
 #### How to Setup Your Server to Your Personal Domain Name
@@ -211,7 +204,7 @@ This will automatically detect your router and will also auto-forward the ports 
 
 ![](https://cdn-images-1.medium.com/max/628/1*gOgCVJaI7Yk8zB5Vbj4BLQ.png)
 
-1. Router Settings (M-Important)
+7. Router Settings (M-Important)
 Log-in to your router admin panel and add a Secondary DNS Server to your router settings. This secondary DNS is the Internal IP of your server (10.0.0.150)
 Because without adding the secondary DNS to your router settings you won’t be able to access your server over your domain name.
 
@@ -224,7 +217,7 @@ Because without adding the secondary DNS to your router settings you won’t be 
 - Enable 2FA
 - Keep DSM Up To Date
 
-#### How To Backup Your Data In Synology NAS
+### How To Backup Your Data In Synology NAS
 
 #### Phone Backup
 
@@ -235,7 +228,7 @@ Because without adding the secondary DNS to your router settings you won’t be 
 
 #### Laptop & PC Backup
 
-- Windows : You can take backup of your important folders automatically to this server
+Windows : You can take backup of your important folders automatically to this server
 - Go to Settings ➢ Update and Security ➢ Backup
 - Select a drive for backup
 - In this step you will face a problem in selecting a drive for which you have to Download Synology Assistant App for windows then create a folder in server you want to save your backup then map this folder as a drive and then select folders you want to take backup regularly.

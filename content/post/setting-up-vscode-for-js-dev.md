@@ -36,7 +36,7 @@ ___
 
 ![Cobalt2-Theme](https://cdn.hashnode.com/res/hashnode/image/upload/v1569003333698/-A3O8MZp3.png)
 
-This theme requires some configuration when you will open the above link then it will show some recommended settings which we are covered in our setup, so you don't need to configure separately if you have followed this article. But we need to set up CSS hacks for extra smooth editor this will also require some configuration , so we will first install plugin called {{[ vscode-custom-css](http://be5invis/vscode-custom-css) }} after installing the plugin, you will need to create a file {{ .vscodestyles.css}} in your root directory {{ Windows - C:/Users/{{Pc_Username}}/AppData/Roaming/Code/User/.vscodestyles.css}} and copy the code from [cobalt2-custom-hacks.css](https://github.com/wesbos/cobalt2-vscode/blob/master/cobalt2-custom-hacks.css) and then go to your editor enable custom CSS {{ Ctrl + Shift + P ➢ Search Enable Custom CSS and JS }} and paste your file location in settings.json in vs code which is given in configuration file below.
+This theme requires some configuration when you will open the above link then it will show some recommended settings which we are covered in our setup, so you don't need to configure separately if you have followed this article. But we need to set up CSS hacks for extra smooth editor this will also require some configuration , so we will first install plugin called [ vscode-custom-css](http://be5invis/vscode-custom-css) after installing the plugin, you will need to create a file `.vscodestyles.css` in your root directory `Windows - C:/Users/${USER}/AppData/Roaming/Code/User/.vscodestyles.css` and copy the code from [cobalt2-custom-hacks.css](https://github.com/wesbos/cobalt2-vscode/blob/master/cobalt2-custom-hacks.css) and then go to your editor enable custom CSS `Ctrl + Shift + P ➢ Search Enable Custom CSS and JS` and paste your file location in settings.json in vs code which is given in configuration file below.
 
 - [Fairy Floss](https://github.com/sailorhg/fairyfloss) {{ Purple Background Theme }}
 
@@ -143,8 +143,7 @@ File ➢ Preferences ➢ Settings ➢ Then click the "Curly Brackets" to open "S
 
 This includes terminal settings, files settings, and plugins settings.
 
-- Note:
-  - In Window Title you need to copy your favorite Emoji {remember to Delete brackets around it } & paste , these emojis shown with your file name .
+- Note: In Window Title you need to copy your favorite Emoji {remember to Delete brackets around it } & paste , these emojis shown with your file name .
 
 - In terminal shell select [zsh](https://ohmyz.sh/) if you have already installed [zsh](https://ohmyz.sh/) terminal, otherwise select bash. Window.Title Settings
 

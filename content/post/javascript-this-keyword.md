@@ -39,6 +39,7 @@ Now we look on the values it works with :
 3. **The `this` value in its immediate context.**
 4. **The listening element.**
 
+---
 ### 1. `window` Object
 
 - By default `this` refers to global object
@@ -47,86 +48,89 @@ Now we look on the values it works with :
  1. In Browser Environment = `window` object is a global object .
  2. In Node.js Environment = Special object `global` will be the value of this.
 
-- `this` in global scope/simple_function/IIFE === Points to the window object.
+ `this` in global scope/simple_function/IIFE === Points to the window object.
 
-Case 1: `this` in global context.
+- Case 1: `this` in global context.
 
 ```JavaScript
  console.log(this) //window
 ```
 ![this in global context](https://cdn.hashnode.com/res/hashnode/image/upload/v1569464866845/TCGeG-57H.png)
 
-Case 2: `this` in simple function.
+- Case 2: `this` in simple function.
 
-{{< gist AkashRajvanshi d5510b4638fd2b5d02dbc94922 >}}
+{{< gist AkashRajvanshi 0698f37d5510b4638fd2b5d02dbc9492 >}}
 
-Case 3: `this` in  IIFE(Immediately invoked Function).
+- Case 3: `this` in  IIFE(Immediately invoked Function).
 
-%[https://gist.github.com/AkashRajvanshi/7903c7c212c3bf7cf8d8a1e8e0f447a9]
+{{< gist AkashRajvanshi 7903c7c212c3bf7cf8d8a1e8e0f447a9 >}}
 
-Case 4: `this` in strict mode.
+- Case 4: `this` in strict mode.
 
- If **strict mode** is enabled for any function then the value of `this` will be `undefined` as in strict mode, global object refers to `undefined` in the place of `window` object.
+ If strict mode is enabled for any function then the value of `this` will be `undefined` as in strict mode, global object refers to `undefined` in the place of `window` object.
 
-%[https://gist.github.com/AkashRajvanshi/d3d31b8228888df30dbcb5004e07c20a]
+{{< gist AkashRajvanshi d3d31b8228888df30dbcb5004e07c20a >}}
 
-**Note**: You are working with Web-Pack then you will also see `undefined` as it doesn't allow us to access the global object.
+Note: You are working with Web-Pack then you will also see `undefined` as it doesn't allow us to access the global object.
 
+---
 ### 2. The Object
 
-Case 1:  "this" in Constructor Function.
+- Case 1:  "this" in Constructor Function.
 
 `this` in Constructor Function === Points to Newly Created Instance.
 
 When a function is invoked with “new” keyword then the function is known as constructor function and returns a new instance. In such cases, the value of `this` refers to newly created instance.
 
-%[https://gist.github.com/AkashRajvanshi/8459e545b2ab22b57ec381caeeeba2ba]
+{{< gist AkashRajvanshi 8459e545b2ab22b57ec381caeeeba2ba  >}}
 
-Case 2: `this` in Object's Method.
+- Case 2: `this` in Object's Method.
 
 `this` in Object's Method === Points to invoker object (Parent object)
 
 In JavaScript, property of an object can be a method or a simple value. When an Object’s method is invoked then `this` refers to the object which contains the method being invoked.
 
-%[https://gist.github.com/AkashRajvanshi/808b715726bad5f1dc2aaea5d2846f2b]
+{{< gist AkashRajvanshi 808b715726bad5f1dc2aaea5d2846f2b >}}
 
 One frustrating thing for beginners to understand is this – `this` always point to `window`, even if the simple function is used in a method.
 
-%[https://gist.github.com/AkashRajvanshi/4c32d09d86d35b0a58b98dcbcfcfa607]
+{{< gist AkashRajvanshi 4c32d09d86d35b0a58b98dcbcfcfa607 >}}
 
 When it is being called as a simple function call then `this` refers to `global object` and when the same definition is invoked as an object’s method then `this` refers to the `parent object`. So the value of `this` depends on how a method is being invoked as well.
 
+---
 ### 3. The `this` value in its immediate context
 
-- `this` in Arrow functions === Points to same `this` value in surrounding scope.
+`this` in Arrow functions === Points to same `this` value in surrounding scope.
 
-Case 1 : `this` in Arrow Functions.
+- Case 1 : `this` in Arrow Functions.
 
 `this` in an arrow function always points to the same `this` value in the surrounding scope.
 
 In the example below, the `this` value within `firstName` is the same value as `this` in `name` . Since the `this` value in `name` is the `Person`, `this` within the arrow function also points back to the `Person`.
 
-%[https://gist.github.com/AkashRajvanshi/d7a72eaf9ed501ce4131daa3aa6a08ca]
+{{< gist AkashRajvanshi d7a72eaf9ed501ce4131daa3aa6a08ca >}}
 
 When arrow functions are used to create functions in methods, this will point back to the object.
 
 If you use the arrow function to create simple functions in a global context, `this` points to `window` because `window` is the `this` value of the surrounding scope.
 
-%[https://gist.github.com/AkashRajvanshi/659eed1880fcbd848c7317e817ac8699]
+{{< gist AkashRajvanshi 659eed1880fcbd848c7317e817ac8699 >}}
 
+---
 ### 4. The Listing Element
 
-- `this` in listing element === Points to the listening element
+`this` in listing element === Points to the listening element
 
-Case 1 :  `this` in listening element.
+- Case 1 :  `this` in listening element.
 
-%[https://gist.github.com/AkashRajvanshi/95892e37df1d89ff0711a028d1a09aea]
+{{< gist AkashRajvanshi 95892e37df1d89ff0711a028d1a09aea >}}
 
 When `this` is used in an event listener, this points back to the button
 
 Remember, when you write event listeners with arrow functions, you can still get the listening element with `event.currentTarget`, even though `this` points to something else.
 
-%[https://gist.github.com/AkashRajvanshi/a132641fd07a3b85cb38af879fdaba46]
+{{< gist AkashRajvanshi a132641fd07a3b85cb38af879fdaba46  >}}
 
 ___
 
@@ -143,8 +147,9 @@ ___
 
 Default binding is nothing but a normal calling method of function.
 
-%[https://gist.github.com/AkashRajvanshi/6eb11a325111f5a212cdad8df680da18]
+{{< gist AkashRajvanshi 6eb11a325111f5a212cdad8df680da18 >}}
 
+---
 ### 2. Implicit Binding :
 
 In Implicit binding, `this` keyword will bind with the object which stands before the dot operator.
@@ -156,8 +161,9 @@ In Implicit binding, we use the object to call the functions with the dot operat
 In Below Code :
 `obj` is the `this` for the `foo()` call
 
-%[https://gist.github.com/AkashRajvanshi/4bceddd80164b5cd4a1d1451d862b9cd]
+{{< gist AkashRajvanshi 4bceddd80164b5cd4a1d1451d862b9cd >}}
 
+---
 ### 3. Explicit Binding :
 
 In Explicit Binding, we can force a function call to use a particular object for `this` binding, without putting a property function reference on the object. So we can explicitly say to a function what object it should use for `this` — using functions such as `call()`, `apply()` and `bind()`.
@@ -166,9 +172,9 @@ Explicit binding of `this` occurs when `.call()`, `.apply()` or `.bind()` are us
 
 We call these explicit because we can explicitly passing in a `this` content to `call()` or `apply()`
 
-%[https://gist.github.com/AkashRajvanshi/8973061951d9a371b76f972774434b60]
+{{< gist AkashRajvanshi 8973061951d9a371b76f972774434b60 >}}
 
-Case 1: `this` with `call()`, `apply()` methods.
+- Case 1: `this` with `call()`, `apply()` methods.
 
 A function in JavaScript is also a special type of object. Every function has call(), bind() and apply() methods. These methods can be used to set custom value of `this` to the execution context of function.
 
@@ -176,23 +182,23 @@ A function in JavaScript is also a special type of object. Every function has ca
 
 Syntax  for `call()` function: `sampleFunction.call(thisContext, param1, param2, ... )`
 
-%[https://gist.github.com/AkashRajvanshi/ce8e82d2f1a0a48666546146c943e161]
+{{< gist AkashRajvanshi ce8e82d2f1a0a48666546146c943e161 >}}
 
 The only difference between `call` and `apply` method is the way argument is passed. In case of `apply` method, second argument is an `array` of arguments where in case of `call` method, arguments are passed individually.
 
 Syntax for `apply()` function: `sampleFunction.apply(thisContext, [param1, param2, ...])`
 
-%[https://gist.github.com/AkashRajvanshi/71e47efae41795ee590dc2ffb580f93f]
+{{< gist AkashRajvanshi 71e47efae41795ee590dc2ffb580f93f>}}
 
-Case 2: `this` with `bind()`  Method :
+- Case 2: `this` with `bind()`  Method :
 
 `bind()` method is the exact same as `call()` method but instead of immediately invoking the function, it will return a new function that we can invoke at a later time.
 
 `bind()` provides two opportunities to call a function
 
-%[https://gist.github.com/AkashRajvanshi/d119d488ce87e9a6d510c436497dd995]
+{{< gist AkashRajvanshi d119d488ce87e9a6d510c436497dd995 >}}
 
-Case 3 : `this` with hard binding.
+- Case 3 : `this` with hard binding.
 
 Hard Binding:  When binding is both explicit and strong.
 
@@ -200,27 +206,30 @@ our `showDetails.call(fullname)` is an explicit binding and when we put this sta
 
 even in window object its refer to the object `fullName`
 
-%[https://gist.github.com/AkashRajvanshi/89ba426565b363e7996e5bafda065475]
+{{< gist AkashRajvanshi 89ba426565b363e7996e5bafda065475 >}}
 
+---
 ### 4. `new` binding :
 
 new binding is nothing but we use 'new' keyword, so when we invoke a function with this 'new' keyword,  under the hood, the JavaScript interpreter will create a brand new object for us and call it `this`. Otherwise call as "Constructor Call".
 
-%[https://gist.github.com/AkashRajvanshi/1b506a56978a8fbc2380b8e7263b3fc1]
+{{< gist AkashRajvanshi 1b506a56978a8fbc2380b8e7263b3fc1 >}}
 
+---
  ### 5. Lexical Binding
 
 We use Arrow function to demonstrate lexical binding, as arrow function don't have its own `this` so Instead `this` is determined lexically.
 
 lexical binding of an arrow function cannot be overridden.
 
-%[https://gist.github.com/AkashRajvanshi/1f141d4ec786bb868610699ab0bd89a0]
+{{< gist AkashRajvanshi 1f141d4ec786bb868610699ab0bd89a0 >}}
 
+---
 ### 6. `window` Binding
 
 Explain with an Example :
 
-%[https://gist.github.com/AkashRajvanshi/a0ee8f5dc08df47ed62052d6406365e9]
+{{< gist AkashRajvanshi a0ee8f5dc08df47ed62052d6406365e9 >}}
 
 ___
 
