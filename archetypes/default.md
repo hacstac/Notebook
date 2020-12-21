@@ -17,7 +17,7 @@ autoCollapseToc: false
 postMetaInFooter: false
 hiddenFromHomePage: false
 # You can also define another contentCopyright. e.g. contentCopyright: "This is another copyright."
-contentCopyright: false
+contentCopyright: true
 reward: false
 mathjax: false
 mathjaxEnableSingleDollar: false

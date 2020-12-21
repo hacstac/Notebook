@@ -15,6 +15,8 @@ PostgreSQL is powerful, open-source advanced object-relational database manageme
 
 ---
 
+<!--more-->
+
 ## Installing PostgreSQL
 
 
