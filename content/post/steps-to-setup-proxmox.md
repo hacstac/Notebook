@@ -18,7 +18,7 @@ It provides a small wrapper called pct which I can use to connect to LXC contain
 
 Proxmox VE provides for live migration — the movement of a virtual machine or container from one cluster node to another without any disruption of services. The cluster file system (“pmxcfs”) is a database-driven file system for storing configuration files, replicated in real time to all cluster nodes using Corosync. It is used to store all PVE related configuration files i.e.
 
-If your mind not clear about how proxmox actually works than this architecture diagram will help you ->
+If your mind not clear about how proxmox actually works than this architecture diagram will help you ⤏
 
 ![Proxmox Architecture](https://s3.ap-south-1.amazonaws.com/akash.r/Devops_Notes_screenshots/Virtualization/Proxmox.png)
 
@@ -31,7 +31,7 @@ If your mind not clear about how proxmox actually works than this architecture d
 - Hard Drive
 - One NIC
 
-Note: If you want to compare proxmox with any other virtualization solution or looking for any specific feature. Look it here -> [Proxmox vs OtherVE](https://www.proxmox.com/en/proxmox-ve/comparison)
+Note: If you want to compare proxmox with any other virtualization solution or looking for any specific feature. Look it here ⤏ [Proxmox vs OtherVE](https://www.proxmox.com/en/proxmox-ve/comparison)
 
 Other Note - For homelab you can use old pc, laptop, any mini pc like ( Intel NUC, Hp, Lenevo, Dell Mini PC Clients ( they are around 200 - 300 $))
 
@@ -55,7 +55,7 @@ Note - If you are using Rufus make sure use `DD mode`.
 
 ## Post Installation Tasks
 
-- Proxmox Installer show Private IP ( when installing ), now go to that IP ( https://IP:8006 ) and use your credentials ( You set when installing ) and BANG --> You will see your own mini datacenter console!
+- Proxmox Installer show Private IP ( when installing ), now go to that IP ( https://IP:8006 ) and use your credentials ( You set when installing ) and BANG ⤏ You will see your own mini datacenter console!
 
 ### Task--1 Remove Subscription Message
 
