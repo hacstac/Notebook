@@ -1,5 +1,5 @@
 ---
-title: "HomeLab Series : Setup PostgreSQL"
+title: "HomeLab Series - Setup PostgreSQL"
 date: 2021-01-28T15:43:48+08:00
 draft: false
 tags: ["Database", "Linux", "DevOps"]
