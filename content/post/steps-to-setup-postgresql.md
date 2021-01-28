@@ -1,5 +1,5 @@
 ---
-title: "HomeLab Series: Setup PostgreSQL"
+title: "HomeLab Series - Setup PostgreSQL"
 date: 2021-01-28T15:43:48+08:00
 draft: false
 tags: ["Database", "Linux", "DevOps"]
@@ -142,7 +142,6 @@ postgres=# ALTER USER user_name CREATEUSER;
 # Make a user SUPERUSER
 postgres=# ALTER USER user_name WITH SUPERUSER;
 ```
-
 
 ### Accessible from other hosts
 
@@ -356,7 +355,9 @@ $ ansible-galaxy install geerlingguy.postgresql
 |____postgresql.yaml
 |____hosts
 |____ansible.cfg
+```
 
+```bash
 # ansible.cfg
 ---
 [defaults]
@@ -366,7 +367,9 @@ private_key_file = /home/user/.ssh/id_rsa
 host_key_checking = False
 deprecation_warnings = False
 ---
+```
 
+```bash
 # hosts
 ---
 [all:vars]
@@ -378,7 +381,9 @@ ansible_become_method = sudo
 server1 ansible_host=10.0.1.11 ansible_port=22
 server2 ansible_host=10.0.1.12 ansible_port=22
 ---
+```
 
+```yaml
 # PostgreSQL.yaml
 ---
 - name: Install PostgreSQL
@@ -397,7 +402,7 @@ server2 ansible_host=10.0.1.12 ansible_port=22
     postgresql_group: postgres
     postgresql_locales:
       - 'en_US.UTF-8'
-		postgresql_hba_entries:
+    postgresql_hba_entries:
       - { type: host, database: all, user: all, address: '10.0.1.0/24', auth_method: md5 }
     postgresql_databases:
       - name: test_db
@@ -405,15 +410,17 @@ server2 ansible_host=10.0.1.12 ansible_port=22
         state: present
     postgresql_users:
       - name: backops
-			  password: iamverysecure
-				encrypted: true
+        password: iamverysecure
+        encrypted: true
         db: test_db
         priv: 'all'
         role_attr_flags: 'SUPERUSER'
         state: present
     postgresql_users_no_log: false
 ---
+```
 
+```bash
 # Run a playbook
 $ ansible-playbook -i hosts postgresql.yaml
 

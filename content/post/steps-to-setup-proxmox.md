@@ -1,5 +1,5 @@
 ---
-title: "HomeLab Series: Setup Proxmox"
+title: "HomeLab Series - Setup Proxmox"
 date: 2021-01-25T19:43:48+08:00
 draft: false
 tags: ["Virtualization", "Linux", "DevOps"]
