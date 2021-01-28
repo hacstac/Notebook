@@ -1,6 +1,6 @@
 ---
-title: "How To Setup PostgreSQL On Your Local Env!!"
-date: 2020-12-08T15:43:48+08:00
+title: "HomeLab Series : Setup PostgreSQL"
+date: 2021-01-28T15:43:48+08:00
 draft: false
 tags: ["Database", "Linux", "DevOps"]
 categories: ["Database"]
@@ -88,6 +88,7 @@ $ createdb -O {db_user} {db_name}
 
 # Check users
 $ psql -c "select usename from pg_user;"
+
  usename
 ----------
  backops
@@ -105,6 +106,43 @@ backops=# \l
             |          |          |             |             | postgres=C*T*c*/backops
  postgres   | postgres | UTF8     | en_IN.UTF-8 | en_IN.UTF-8 |
 ```
+
+### Granting and Roles
+
+```sql
+# GRANT - Define Access Privileges
+
+# Grant Connect to the DB
+postgres=# GRANT CONNECT ON DATABASE db_name TO user;
+
+# Grant USAGE to schema
+postgres=# GRANT USAGE ON SCHEMA schema_name TO user;
+
+# Grant CRUD to the DB
+postgres=# GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA schema_name TO user;
+
+# Grant ALL privileges on all Tables in the schema
+postgres=# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA schema_name TO user;
+
+# Grant all privileges on the database
+postgres=# GRANT ALL PRIVILEGES ON DATABASE db_name TO user;
+
+#------------------------------------------------------------------#
+# Alter Role - Change a database role
+
+# Give Permission to create database
+postgres=# ALTER USER user_name CREATEDB;
+
+# Give Permission to create roles
+postgres=# ALTER USER user_name CREATEROLE;
+
+# Give Permission to create users
+postgres=# ALTER USER user_name CREATEUSER;
+
+# Make a user SUPERUSER
+postgres=# ALTER USER user_name WITH SUPERUSER;
+```
+
 
 ### Accessible from other hosts
 
@@ -153,23 +191,23 @@ $ sudo systemctl restart postgresql.service
 # Note: for ubuntu use the above listed dir
 ```
 
-### Some Basic psql Commands
+### Basic psql Commands
 
 ```bash
 # Daily Use psql commands
-\?: show all psql commands.
-\h sql-command: show syntax on SQL command.
-\c dbname [username]: Connect to database, with an optional username (or \connect)
-\l: List all database (or \list).
-\d: Display all tables, indexes, views, and sequences.
-\dt: Display all tables.
-\di: Display all indexes.
-\dv: Display all views.
-\ds: Display all sequences.
-\dT: Display all types.
-\dS: Display all system tables.
-\du: Display all users.
-\x auto|on|off: Toggle|On|Off expanded output mode.
+\? : show all psql commands.
+\h : sql-command: show syntax on SQL command.
+\c : dbname [username]: Connect to database, with an optional username (or \connect)
+\l : List all database (or \list).
+\d : Display all tables, indexes, views, and sequences.
+\dt : Display all tables.
+\di : Display all indexes.
+\dv : Display all views.
+\ds : Display all sequences.
+\dT : Display all types.
+\dS : Display all system tables.
+\du : Display all users.
+\x : auto|on|off: Toggle|On|Off expanded output mode.
 ```
 
 ### Basic CRUD Operations with PostgreSQL
@@ -280,10 +318,107 @@ $ psql -U postgres
 > CREATE DATABASE database_name;
 > CREATE USER user_name WITH PASSWORD 'password';
 > GRANT ALL PRIVILEGES ON DATABASE database_name TO user_name;
-> /du # List users
-> /l  # list databases
-> /q  # Quit
-> /dt # List Tables
+> \du # List users
+> \l  # list databases
+> \q  # Quit
+> \dt # List Tables
+```
+
+---
+
+## Automate with Ansible
+
+To follow these steps everytime when you create a new VM instance is a very time consuming and boring stuff. Here I use to automate the setup with ansible.
+
+- Needs
+  - Install PostgreSQL
+  - Setup PostgreSQL
+    - Enable and Start the Postgresql Systemd Service
+    - Setup on Custom Dir
+  - Remote Access
+  - Create a Users and Databases
+
+```bash
+# Note: Here, I use preconfigured ansible role to setup postgresql database. Created By GeerlingGuy ( https://github.com/geerlingguy/ansible-role-postgresql ). You can reference this and create your own role to setup postgresql.
+
+
+# STEP - 1 : Install Ansible
+
+# STEP - 2 : Download geerlingguy's - ansible-role-postgresql
+$ ansible-galaxy install geerlingguy.postgresql
+
+# STEP - 3 : Setup Ansible Env
+
+# Note: Before proceding, please add a password-less communication between your client and server
+
+# Create a Dir and Create these files
+.
+|____postgresql.yaml
+|____hosts
+|____ansible.cfg
+
+# ansible.cfg
+---
+[defaults]
+inventory = hosts
+remote_user = ubuntu
+private_key_file = /home/user/.ssh/id_rsa
+host_key_checking = False
+deprecation_warnings = False
+---
+
+# hosts
+---
+[all:vars]
+ansible_user = ubuntu
+ansible_become = yes
+ansible_become_method = sudo
+
+[server]
+server1 ansible_host=10.0.1.11 ansible_port=22
+server2 ansible_host=10.0.1.12 ansible_port=22
+---
+
+# PostgreSQL.yaml
+---
+- name: Install PostgreSQL
+  hosts: server
+  become: yes
+  roles:
+    - geerlingguy.postgresql
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    postgresql_unix_socket_directories:
+      - /var/run/postgresql
+    postgresql_service_enabled: true
+    postgresql_service_state: started
+    postgresql_restarted_state: "restarted"
+    postgresql_user: postgres
+    postgresql_group: postgres
+    postgresql_locales:
+      - 'en_US.UTF-8'
+		postgresql_hba_entries:
+      - { type: host, database: all, user: all, address: '10.0.1.0/24', auth_method: md5 }
+    postgresql_databases:
+      - name: test_db
+        owner: backops
+        state: present
+    postgresql_users:
+      - name: backops
+			  password: iamverysecure
+				encrypted: true
+        db: test_db
+        priv: 'all'
+        role_attr_flags: 'SUPERUSER'
+        state: present
+    postgresql_users_no_log: false
+---
+
+# Run a playbook
+$ ansible-playbook -i hosts postgresql.yaml
+
+# BOOM: This playbook will install and setup postgresql and create a backops user with SUPERUSER privilege and also creates a DB ( test_db ).
+# Now, whenever you setup a new server machine. You only need to run this playbook. You can also setup this for creating a postgres docker container.
 ```
 
 ---
@@ -318,7 +453,7 @@ PGPASSWORD="password" pg_dump -h $HOST -U $USER -d $DB -Fp | gzip > x-backup-$DA
 
 # Note: For all pg_dump options: https://www.postgresql.org/docs/13/app-pgdump.html
 ```
-- Note: You can also use backup scripts like this, that create a backup of your and pushed to the cloud (eg: S3) ( Please Read The Code Before Using )
+- **Note**: You can also use backup scripts like this, that create a backup of your and pushed to the cloud: eg: S3. ( Please Read The Code Before Using )
   - [postgres-manage-python](https://github.com/valferon/postgres-manage-python)
 
 ### Restore

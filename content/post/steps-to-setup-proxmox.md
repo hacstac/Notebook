@@ -1,6 +1,6 @@
 ---
-title: "Beginner's Guide To Setup Proxmox for HomeLab!!"
-date: 2021-01-10T19:43:48+08:00
+title: "HomeLab Series : Setup Proxmox"
+date: 2021-01-25T19:43:48+08:00
 draft: false
 tags: ["Virtualization", "Linux", "DevOps"]
 categories: ["Virtualization"]
@@ -82,7 +82,7 @@ void({
   title: gettext('No valid subscription'),
 
 # STEP4 - Restart preproxy service
-$ systemctl restart preproxy.service
+$ systemctl restart pveproxy.service
 
 # To Check ( it'ss working or not )
 $ grep -n -B 1 'No valid sub' proxmoxlib.js
@@ -102,7 +102,7 @@ deb http://download.proxmox.com/debian buster pve-no-subscription
 
 
 $ cd /etc/apt/sources.list.d
-$ mv pve-enterprise.list pve-enterprise.list.bak
+$ cp pve-enterprise.list pve-enterprise.list.bak
 $ vim pve-enterprise.list
 # comment out this line : deb https://enterprise.proxmox.com/debian/pve buster pve-enterprise
 
