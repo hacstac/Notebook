@@ -1,10 +1,10 @@
 ---
-title: "HomeLab Series - MySQL 101"
+title: 'HomeLab Series - MySQL 101'
 date: 2021-01-31T15:43:48+08:00
 draft: false
-tags: ["Database", "Linux", "DevOps"]
-categories: ["Database"]
-author: "Akash Rajvanshi"
+tags: ['Database', 'Linux', 'DevOps']
+categories: ['Database']
+author: 'Akash Rajvanshi'
 
 autoCollapseToc: false
 ---
@@ -26,7 +26,6 @@ MariaDB offers more and better storage engines. NoSQL support, provided by Cassa
 ---
 
 ## Installation
-
 
 ```bash
 ================================================================================================
@@ -454,6 +453,7 @@ $ ansible-playbook -i hosts mysql.yaml
 ## How to Backup & Restore MySQL-DB
 
 ### Backup
+
 ```bash
 ## MySQLDUMP
 
@@ -493,7 +493,6 @@ $ sudo apt install mariadb-backup
 # --target-dir - where to place the backup files.
 $ mariabackup --backup --target-dir=/var/mariadb/backup/ --user=backops --password=password
 ```
-
 
 ### Restore
 
