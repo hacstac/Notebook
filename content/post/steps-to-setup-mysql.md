@@ -451,7 +451,7 @@ $ ansible-playbook -i hosts mysql.yaml
 
 ---
 
-## How to Backup & Restore PostgreSQL-DB
+## How to Backup & Restore MySQL-DB
 
 ### Backup
 ```bash
