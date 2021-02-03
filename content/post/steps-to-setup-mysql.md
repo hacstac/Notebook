@@ -349,6 +349,7 @@ To follow these steps everytime when you create a new VM instance is a very time
   - Remote Access
   - Create a Users and Databases
 
+
 ```bash
 # Note: Here, I use preconfigured ansible role to setup mysql database. Created By GeerlingGuy ( https://github.com/geerlingguy/ansible-role-mysql ). You can reference this and create your own role to setup mysql.
 
